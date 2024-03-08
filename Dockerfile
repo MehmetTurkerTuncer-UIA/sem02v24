@@ -22,3 +22,11 @@ RUN git config --global user.email "mehmettt@student.uia.no" \
 && git config --global user.name "MehmetTurkerTuncer-UIA" \
 && git config --global url."https://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:@github.com/".insteadOf "https://github.com" \
 && mkdir -p github.com/MehmetTurkerTuncer-UIA
+USER root
+RUN curl -SL https://go.dev/dl/go1.21.7.OS-ARCH.tar.gz \
+| tar xvz -C /usr/local
+USER mehmet
+SHELL ["/bin/bash", "-c"]
+RUN mkdir -p $HOME/go/{src,bin}
+ENV GOPATH="/home/mehmet/go"
+ENV PATH="${PATH}:${GOPATH}/bin:/usr/local/go/bin"
