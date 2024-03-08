@@ -10,7 +10,7 @@ nano \
 wget \
 curl \
 git
-RUN useradd -G sudo -m -d /home/BRUKER -s /bin/bash -p "$(openssl passwd -1 221243Mt.)" mehmet
+RUN useradd -G sudo -m -d /home/mehmet -s /bin/bash -p "$(openssl passwd -1 221243Mt.)" mehmet
 USER mehmet
 WORKDIR /home/mehmet
 RUN mkdir hacking \
@@ -21,4 +21,4 @@ RUN mkdir hacking \
 RUN git config --global user.email "mehmettt@student.uia.no" \
 && git config --global user.name "MehmetTurkerTuncer-UIA" \
 && git config --global url."https://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:@github.com/".insteadOf "https://github.com" \
-&& mkdir -p github.com/GITHUB-BRUKERNAVN
+&& mkdir -p github.com/MehmetTurkerTuncer-UIA
