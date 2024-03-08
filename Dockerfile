@@ -23,7 +23,7 @@ RUN git config --global user.email "mehmettt@student.uia.no" \
 && git config --global url."https://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:@github.com/".insteadOf "https://github.com" \
 && mkdir -p github.com/MehmetTurkerTuncer-UIA
 USER root
-RUN curl -SL https://go.dev/dl/go1.21.7.windows-amd64.zip \
+RUN curl -SL https://go.dev/dl/go1.21.7.linux-amd64.tar.gz \
 | tar xvz -C /usr/local
 USER mehmet
 SHELL ["/bin/bash", "-c"]
