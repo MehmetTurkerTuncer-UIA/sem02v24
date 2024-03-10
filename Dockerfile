@@ -9,7 +9,14 @@ sudo \
 nano \
 wget \
 curl \
-git
+git \
+build-essential \
+gcc \
+openjdk-21-jdk \
+mono-complete \
+python3 \
+strace \
+valgrind
 RUN useradd -G sudo -m -d /home/mehmet -s /bin/bash -p "$(openssl passwd -1 221243Mt.)" mehmet
 USER mehmet
 WORKDIR /home/mehmet
@@ -21,7 +28,7 @@ RUN mkdir hacking \
 RUN git config --global user.email "mehmettt@student.uia.no" \
 && git config --global user.name "MehmetTurkerTuncer-UIA" \
 && git config --global url."https://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:@github.com/".insteadOf "https://github.com" \
-&& mkdir -p github.com/MehmetTurkerTuncer-UIA
+&& mkdir -p github.com/mehmet
 USER root
 RUN curl -SL https://go.dev/dl/go1.21.7.linux-amd64.tar.gz \
 | tar xvz -C /usr/local
@@ -30,3 +37,8 @@ SHELL ["/bin/bash", "-c"]
 RUN mkdir -p $HOME/go/{src,bin}
 ENV GOPATH="/home/mehmet/go"
 ENV PATH="${PATH}:${GOPATH}/bin:/usr/local/go/bin"
+ARG DEBIAN_FRONTEND=noninteractive
+RUN curl --proto '=https' --tlsv1.3 https://sh.rustup.rs -sSf \
+| sh -s -- -y
+ENV PATH="${PATH}:${HOME}/.cargo/bin"
+
